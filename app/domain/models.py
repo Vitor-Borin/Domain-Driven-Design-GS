@@ -1,7 +1,6 @@
 def calcular_pegada(data):
     impacto_total = 0
 
-    # Transporte
     transporte = 50 if data['carTravel'] > 100 else 20
     if data['publicTransport'] == "1-3":
         transporte -= 10
@@ -13,7 +12,6 @@ def calcular_pegada(data):
         transporte -= 15
     impacto_total += max(transporte, 10)
 
-    # Energia
     energia = 40 if data['electricityBill'] > 500 else 20
     if data['efficientAppliances'] == "Sim":
         energia -= 10
@@ -21,19 +19,16 @@ def calcular_pegada(data):
         energia -= 20
     impacto_total += max(energia, 10)
 
-    # Resíduos
     residuos = 30 if data['trashBags'] == "7+" else 15
     if data['recycle'] == "Não":
         residuos += 25
     impacto_total += max(residuos, 10)
 
-    # Estilo de vida
     estilo_de_vida = 40 if data['shopping'] == "Muito" else 20
     if data['deliveries'] == "Muito":
         estilo_de_vida += 30
     impacto_total += max(estilo_de_vida, 10)
 
-    # Alimentação e Água
     alimentacao = 0
     if data['meatConsumption'] == "Diariamente":
         alimentacao += 30
